@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Navigator from './navigator/Navigator';
 
 import {Colors} from './assets/Colors';
+import MainNavigator from './navigator/MainNavigator';
 // import StackNavigator from './navigator/StackNavigator';
 
 
@@ -11,6 +12,8 @@ import {Colors} from './assets/Colors';
 export default function App() {
   return (
     <View style={styles.container}>
+     {/* creo que esto es lo quiere el desafio */}
+     {/* <MainNavigator/> */}
      <Navigator/>
      {/* <StackNavigator/> */}
       {/* <Text>hola mundo</Text> */}

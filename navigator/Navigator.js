@@ -9,9 +9,9 @@ import Home from '../Components/Home';
 import Balance from '../Components/Balance';
 import Grafico from '../Components/Grafico';
 import CotizacionesCripto from '../Components/CotizacionesCripto';
+import GoHome from '../Components/GoHome';
 
 import { Colors } from '../assets/Colors';
-import GoHome from '../Components/GoHome';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,9 +31,9 @@ const Navigator = () => (
            <Drawer.Screen name="Balance" component={Balance} options={{headerTitle: 'Balance', headerRight: ()=> <GoHome/>}}/>
            <Drawer.Screen name="Grafico" component={Grafico} options={{headerTitle: 'Grafico', headerRight: ()=> <GoHome/>}}/>
            <Drawer.Screen name="CotizacionesCripto" component={CotizacionesCripto} options={{headerTitle: 'Best Crypto', headerRight: ()=> <GoHome/>}}/>
-           {/* <Drawer.Screen name="GoHome" component={GoHome} /> */}
+          
         </Drawer.Navigator>
-        </NavigationContainer>
+         </NavigationContainer>
       );
 
      
