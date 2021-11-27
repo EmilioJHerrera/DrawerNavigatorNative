@@ -1,5 +1,5 @@
 import React , {useEffect, useState} from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ import InfoCriptoDisplay from './InfoCriptoDisplay';
 
 const CotizacionesCripto = () => {
     //States
+    const [flatData, setFlatData] = useState([]);
     const [cryptoInfo, setCryptoInfo] = useState([]);
     const [apiReady, setApiReady] = useState(false);
     //efecto de consulta de API para Bitcoin, etherium, binancecoin, usdt
@@ -21,6 +22,12 @@ const CotizacionesCripto = () => {
             setCryptoInfo(resultado.data.DISPLAY);
             //console.log('cryptoInfo', cryptoInfo.ETH.ARS.IMAGEURL);
             setApiReady(true);  
+            setFlatData([
+                {id: 2, name: 'Ethereum', price: `${cryptoInfo.ETH.USD.PRICE}`, max: `${cryptoInfo.ETH.ARS.HIGHDAY}`, min: `${cryptoInfo.ETH.ARS.LOWDAY}`, change: `${cryptoInfo.ETH.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.ETH.ARS.IMAGEURL}`},
+                {id: 1, name: 'Bitcoin', price: `${cryptoInfo.BTC.ARS.PRICE}`, max: `${cryptoInfo.BTC.ARS.HIGHDAY}`, min: `${cryptoInfo.BTC.ARS.LOWDAY}`, change: `${cryptoInfo.BTC.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.BTC.ARS.IMAGEURL}`},
+                {id: 3, name: 'BinaceCoin', price: `${cryptoInfo.BNB.USD.PRICE}`, max: `${cryptoInfo.BNB.ARS.HIGHDAY}`, min: `${cryptoInfo.BNB.ARS.LOWDAY}`, change: `${cryptoInfo.BNB.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.BNB.ARS.IMAGEURL}`},
+                {id: 4, name: 'Usdt', price: `${cryptoInfo.USDT.USD.PRICE}`, max: `${cryptoInfo.USDT.ARS.HIGHDAY}`, min: `${cryptoInfo.USDT.ARS.LOWDAY}`, change: `${cryptoInfo.USDT.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.USDT.ARS.IMAGEURL}`},        
+            ]);
           } catch (error) {
               console.log(error);
           }
@@ -31,12 +38,16 @@ const CotizacionesCripto = () => {
         }
         consultarAPI();
         console.log("ESTOY RENDERIZANDO")
+
+
+
+
     },[]);
     
+
     
     
-    
-    //CONVERTIR A FLATLIST PARA MOSTRAR LOS DATOS, PERO LOS DATOS SON LOS CORRECTOS, PERO NO SE MUESTRAN
+    //DESCOMPONENTIZAR EL FLATLIST, ASI GARANTIZA SU CARGA ANTES DE QUE EL COMPONENTE SE RENDERIZE (has un cambio y crtl s)
     // PREVENIDO QUE EL HOOK DE NAVIGATOR NO RERENDERIZA EL COMPONENTE (BUG O FEATURE?)
     return ( 
         <View style= {styles.container}>
@@ -44,7 +55,28 @@ const CotizacionesCripto = () => {
             {apiReady?<InfoCriptoDisplay cryptoInfo={cryptoInfo} />: null} 
             
             {!apiReady?<Text>Cargando...</Text>: null} 
-            
+             
+            {apiReady?
+            <FlatList 
+        data={flatData}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={(item=>(
+            <View >
+                <View>
+                    <Text >{item.item.name}</Text>
+                    <Text >{item.item.price}</Text>
+                    <Text >{item.item.max}</Text>
+                    <Text >{item.item.min}</Text>
+                    <Text >{item.item.change}</Text>
+                    <View>
+                        <Image source={{uri:item.item.image}} style={{ width: 50, height: 50, }}/>
+                    </View>
+                    
+                </View>
+            </View>
+        ))}/>
+        : <Text>Cargando flatlist...</Text>}
+
 
 
         </View>

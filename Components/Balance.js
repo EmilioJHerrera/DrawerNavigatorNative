@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, FlatList,  } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'; 
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
-
+import { Dimensions } from "react-native";
 // hay que ingresar los gastos en distintas categorias
 // ingresos (salario, rentas, pensiones);
 // gastos esenciales (vivienda, transporte, comida, servicios para el hogar y medicinas); 
@@ -23,6 +23,7 @@ const [data, setData] = useState([
     {id: 2, name: 'Regalo', amount: '500', type: 'outcome', category: 'extras'},
     {id: 3, name: 'Compras', amount: '40', type: 'outcome', category: 'ocio'},
     {id: 4, name: 'Freelo', amount: '20', type: 'income', category: 'pension'},
+    
 ]);
 
 //funcion para eliminar un dato de data
@@ -52,6 +53,12 @@ const deleteData = (id) => {
         ))}/>
  
  
+            <View>
+            <TouchableHighlight onPress={()=>console.log(`aqui`)} style={styles.fab}> 
+                           <Text>+</Text>
+                    </TouchableHighlight>
+            </View>
+
         <Text>Muestra los registros de los egresos y los ingresos</Text>
     </View>
      );
@@ -67,11 +74,22 @@ const deleteData = (id) => {
           flatContainer:{
             flexDirection: 'row',  
             paddingVertical: '2.5%',
-                paddingHorizontal: '10%',
+            paddingHorizontal: '10%',
           },
           casilla:{
             width: '30%',
-        
+            },
+          fab:{
+            // position: 'relative',
+            width: 56,
+            height: 56,
+            alignItems: 'center',
+            justifyContent: 'center',
+            left: Dimensions.get("window").width - 76,
+            bottom: 20,
+            backgroundColor: '#03A9F4',
+            borderRadius: 30,
+            elevation: 8
           },
     });
      

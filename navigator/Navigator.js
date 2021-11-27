@@ -33,7 +33,7 @@ const Navigator = () => (
            <Drawer.Screen name="CotizacionesCripto" component={CotizacionesCripto} options={{headerTitle: 'Best Crypto', headerRight: ()=> <GoHome/>}}/>
           
         </Drawer.Navigator>
-         </NavigationContainer>
+       </NavigationContainer>
       );
 
      
