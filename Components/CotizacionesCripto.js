@@ -23,7 +23,7 @@ const CotizacionesCripto = () => {
             //console.log('cryptoInfo', cryptoInfo.ETH.ARS.IMAGEURL);
             setApiReady(true);  
             setFlatData([
-                {id: 2, name: 'Ethereum', price: `${cryptoInfo.ETH.USD.PRICE}`, max: `${cryptoInfo.ETH.ARS.HIGHDAY}`, min: `${cryptoInfo.ETH.ARS.LOWDAY}`, change: `${cryptoInfo.ETH.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.ETH.ARS.IMAGEURL}`},
+                {id: 2, name: 'Ethereum', price: `${cryptoInfo.ETH.ARS.PRICE}`, max: `${cryptoInfo.ETH.ARS.HIGHDAY}`, min: `${cryptoInfo.ETH.ARS.LOWDAY}`, change: `${cryptoInfo.ETH.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.ETH.ARS.IMAGEURL}`},
                 {id: 1, name: 'Bitcoin', price: `${cryptoInfo.BTC.ARS.PRICE}`, max: `${cryptoInfo.BTC.ARS.HIGHDAY}`, min: `${cryptoInfo.BTC.ARS.LOWDAY}`, change: `${cryptoInfo.BTC.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.BTC.ARS.IMAGEURL}`},
                 {id: 3, name: 'BinaceCoin', price: `${cryptoInfo.BNB.USD.PRICE}`, max: `${cryptoInfo.BNB.ARS.HIGHDAY}`, min: `${cryptoInfo.BNB.ARS.LOWDAY}`, change: `${cryptoInfo.BNB.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.BNB.ARS.IMAGEURL}`},
                 {id: 4, name: 'Usdt', price: `${cryptoInfo.USDT.USD.PRICE}`, max: `${cryptoInfo.USDT.ARS.HIGHDAY}`, min: `${cryptoInfo.USDT.ARS.LOWDAY}`, change: `${cryptoInfo.USDT.ARS.CHANGEPCT24HOUR}`, image: `https://www.cryptocompare.com${cryptoInfo.USDT.ARS.IMAGEURL}`},        

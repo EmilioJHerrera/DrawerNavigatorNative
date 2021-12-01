@@ -16,15 +16,27 @@ import { Dimensions } from "react-native";
 //CUANTE HUBIESE GUSTADO CONSEGUID AHORRAR
 //Cuanto estas gastando
 
-const Balance = () => {
+import { useSelector } from 'react-redux';
+import store from '../store';
 
-const [data, setData] = useState([
-    {id: 1, name: 'Salario', amount: '1.000', type: 'income', category: 'salario'},
-    {id: 2, name: 'Regalo', amount: '500', type: 'outcome', category: 'extras'},
-    {id: 3, name: 'Compras', amount: '40', type: 'outcome', category: 'ocio'},
-    {id: 4, name: 'Freelo', amount: '20', type: 'income', category: 'pension'},
+const Balance = () => {
+ //SOLO DEVUELVE UNDEFINED!!!!
+// const data = useSelector(state => state.items.itemList);
+// console.log(data);
+
+//CON EL STORE.GETSTATE() POR LO MENOS SE ENCUENTRA EL ARRAY LIST
+
+console.log("store",store.getState());
+const data = store.getState();
+
+//ESTA ES LA LISTA QUE SE TRATA DE VER SI SE PUEDE LEER COMO INITIALSTATE DESDE EL REDUCER
+// const [data, setData] = useState([
+//     {id: 1, name: 'Salario', amount: '1.000', type: 'income', category: 'salario'},
+//     {id: 2, name: 'Regalo', amount: '500', type: 'outcome', category: 'extras'},
+//     {id: 3, name: 'Compras', amount: '40', type: 'outcome', category: 'ocio'},
+//     {id: 4, name: 'Freelo', amount: '20', type: 'income', category: 'pension'},
     
-]);
+// ]);
 
 //funcion para eliminar un dato de data
 const deleteData = (id) => {
