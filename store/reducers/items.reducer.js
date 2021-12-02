@@ -1,3 +1,6 @@
+import { ADD_ITEM, REMOVE_ITEM } from "../actions/items.action";
+
+
 const initialState ={
     list: [
     {id: 1, name: 'Salario', amount: '1.000', type: 'income', category: 'salario'},
@@ -9,7 +12,24 @@ const initialState ={
 
 
 const ItemsReducer = (state = initialState, action) => {
- return state;
+ 
+ switch (action.type){
+     case ADD_ITEM:
+         return {
+            ...state,
+             list: [...state.list, action.payload]
+         }
+        case REMOVE_ITEM:
+            return {
+                ...state,
+                list: state.list.filter(item => item.id !== action.payload)
+            }
+         default:
+             return state;
+ }
+ 
+ 
+    return state;
 }
 
 

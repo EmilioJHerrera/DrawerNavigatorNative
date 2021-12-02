@@ -16,18 +16,26 @@ import { Dimensions } from "react-native";
 //CUANTE HUBIESE GUSTADO CONSEGUID AHORRAR
 //Cuanto estas gastando
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import store from '../store';
+import { removeItem } from '../store/actions/items.action';
+
+
 
 const Balance = () => {
- //SOLO DEVUELVE UNDEFINED!!!!
-// const data = useSelector(state => state.items.itemList);
-// console.log(data);
 
-//CON EL STORE.GETSTATE() POR LO MENOS SE ENCUENTRA EL ARRAY LIST
+const data = useSelector(state => state.items.list);
+console.log(data);
 
-console.log("store",store.getState());
-const data = store.getState();
+const dispach = useDispatch();
+
+const handleDispatchItem = (item) => {
+    console.log ("aqui debe agregar el item a la lista cuando se oprime CTA");
+}
+
+const handleDispatchDeleteItem = (id) => {
+    dispach(removeItem(id));
+}
 
 //ESTA ES LA LISTA QUE SE TRATA DE VER SI SE PUEDE LEER COMO INITIALSTATE DESDE EL REDUCER
 // const [data, setData] = useState([
@@ -56,7 +64,8 @@ const deleteData = (id) => {
                     <Text style={styles.casilla}>{item.item.name}</Text>
                     <Text style={styles.casilla}>{item.item.amount} $</Text>
                     <Text style={styles.casilla}>{item.item.category}</Text>
-                    <TouchableHighlight onPress={()=>deleteData(item.item.id)}> 
+                    {/* <TouchableHighlight onPress={()=>deleteData(item.item.id)}> */}
+                    <TouchableHighlight onPress={()=>handleDispatchDeleteItem(item.item.id)}> 
                            <AntDesign name="delete" size={24} color="black" />
                     </TouchableHighlight>
                     
@@ -66,7 +75,7 @@ const deleteData = (id) => {
  
  
             <View>
-            <TouchableHighlight onPress={()=>console.log(`aqui`)} style={styles.fab}> 
+            <TouchableHighlight onPress={handleDispatchItem} style={styles.fab}> 
                            <Text>+</Text>
                     </TouchableHighlight>
             </View>
