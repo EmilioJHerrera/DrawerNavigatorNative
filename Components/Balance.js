@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import store from '../store';
 import { removeItem } from '../store/actions/items.action';
 
-
+import Cart from './Cart';
 
 const Balance = () => {
 
@@ -80,7 +80,8 @@ const deleteData = (id) => {
                     </TouchableHighlight>
             </View>
 
-        <Text>Muestra los registros de los egresos y los ingresos</Text>
+             <Cart/>   
+        {/* <Text>Muestra los registros de los egresos y los ingresos</Text> */}
     </View>
      );
     }
@@ -101,7 +102,7 @@ const deleteData = (id) => {
             width: '30%',
             },
           fab:{
-            // position: 'relative',
+             position: 'relative',
             width: 56,
             height: 56,
             alignItems: 'center',

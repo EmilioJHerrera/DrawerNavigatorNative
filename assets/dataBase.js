@@ -1,0 +1,1 @@
+export const API_URL_DATABASE = 'https://kakebocoder-default-rtdb.firebaseio.com'
