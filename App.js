@@ -8,6 +8,7 @@ import MainNavigator from './navigator/MainNavigator';
 
 import {Provider} from 'react-redux';
 import store from './store';
+import MainNavigatorAUTH from './navigator/user/MainNavigatorAUTH';
 
 export default function App() {
   return (
@@ -15,7 +16,10 @@ export default function App() {
     <View style={styles.container}>
          {/* Usar MainNvigator para el desafio de TabNavigator, para el final usa Navigator*/}
          {/* <MainNavigator/> */}
-        <Navigator/>
+        
+        
+        {/* <Navigator/> */}
+        <MainNavigatorAUTH/>
      
     </View>
     </Provider>

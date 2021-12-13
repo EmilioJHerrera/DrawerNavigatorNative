@@ -1,22 +1,20 @@
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import React from 'react';
 
-import About from '../Components/About';
-import Home from '../Components/Home';
-import Balance from '../Components/Balance';
-import Grafico from '../Components/Grafico';
-import CotizacionesCripto from '../Components/CotizacionesCripto';
-import GoHome from '../Components/GoHome';
+import About from '../../Components/About';
+import Home from '../../Components/Home';
+import Balance from '../../Components/Balance';
+import Grafico from '../../Components/Grafico';
+import CotizacionesCripto from '../../Components/CotizacionesCripto';
+import GoHome from '../../Components/GoHome';
 
-import { Colors } from '../assets/Colors';
+import { Colors } from '../../assets/Colors';
 
 const Drawer = createDrawerNavigator();
 
-const Navigator = () => (
-        <NavigationContainer>      
+const NavigatorSinContainer = () => (      
         
         <Drawer.Navigator
 
@@ -34,8 +32,8 @@ const Navigator = () => (
            <Drawer.Screen name="CotizacionesCripto" component={CotizacionesCripto} options={{headerTitle: 'Best Crypto', headerRight: ()=> <GoHome/>}}/>
           
         </Drawer.Navigator>
-       </NavigationContainer>
+       
       );
 
      
-export default Navigator;
+export default NavigatorSinContainer;
