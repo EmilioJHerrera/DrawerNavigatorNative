@@ -18,8 +18,8 @@ export default function App() {
          {/* <MainNavigator/> */}
         
         
-        {/* <Navigator/> */}
-        <MainNavigatorAUTH/>
+        <Navigator/>
+        {/* <MainNavigatorAUTH/> */}
      
     </View>
     </Provider>

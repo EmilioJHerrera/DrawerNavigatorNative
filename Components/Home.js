@@ -9,6 +9,7 @@ const Home = ({navigation}) => {
             <Button onPress={()=> navigation.navigate("Grafico")} title="Graficos"></Button>
             <Button onPress={()=> navigation.navigate("CotizacionesCripto")} title="Criptomonedas"></Button>
             <Button onPress={()=> navigation.navigate("About")} title="About"></Button>
+            <Button onPress={()=> navigation.navigate("Camara")} title="Camara"></Button>
         </View>
      );
 }
