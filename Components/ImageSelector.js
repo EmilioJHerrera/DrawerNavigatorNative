@@ -38,6 +38,13 @@ const ImageSelector = props => {
 
   return (
     <View style={styles.container}>
+
+      <View>
+        <Text>Registro de facturas y comprobantes de pago</Text>
+      </View>
+      <View>
+        <Text>Captura los comprobantes de pagos y muestralo en la pantalla</Text>
+      </View>
       <View style={styles.preview}>
         {pickedUri
           ? <Image source={{ uri: pickedUri }} style={styles.image} />

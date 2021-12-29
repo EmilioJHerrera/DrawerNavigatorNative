@@ -1,15 +1,44 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
-
+import { Button, StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+// import { TouchableHighlight } from 'react-native-gesture-handler';
+import { Colors } from '../assets/Colors';
 const Home = ({navigation}) => {
     return ( 
         <View style= {styles.container}>
             {/* <Text>Home</Text> */}
-            <Button onPress={()=> navigation.navigate("Balance")} title="Balance"></Button>
-            <Button onPress={()=> navigation.navigate("Grafico")} title="Graficos"></Button>
-            <Button onPress={()=> navigation.navigate("CotizacionesCripto")} title="Criptomonedas"></Button>
-            <Button onPress={()=> navigation.navigate("About")} title="About"></Button>
-            <Button onPress={()=> navigation.navigate("Camara")} title="Camara"></Button>
+           
+           <View style={styles.container_boton}>
+               <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("Balance")}>
+                   <Text style={styles.label_boton}>Balance</Text>
+               </TouchableHighlight>
+           </View>
+           <View style={styles.container_boton}>
+               <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("Nuevo")}>
+                   <Text style={styles.label_boton}>Nuevo Ingreso</Text>
+               </TouchableHighlight>
+           </View>
+           <View style={styles.container_boton} >
+               <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("Grafico")}>
+                   <Text style={styles.label_boton}>Gráficos</Text>
+               </TouchableHighlight>
+           </View>
+           <View style={styles.container_boton}>
+               <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("CotizacionesCripto")}>
+                   <Text style={styles.label_boton}>Criptomonedas</Text>
+               </TouchableHighlight>
+           </View>
+           <View style={styles.container_boton}>
+               <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("About")}>
+                   <Text style={styles.label_boton}>Sobre la App</Text>
+               </TouchableHighlight>
+           </View>
+           <View style={styles.container_boton}>
+               <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("Camara")}>
+                   <Text style={styles.label_boton}>Registro Foto</Text>
+               </TouchableHighlight>
+           </View>
+
+
         </View>
      );
 }
@@ -17,10 +46,29 @@ const Home = ({navigation}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: Colors.background,
         alignItems: 'center',
         justifyContent: 'center',
       },
+      container_boton:{
+          width: '100%',
+          alignItems: 'center',
+        justifyContent: 'center',
+      },
+      boton: {
+        width: '80%',
+        backgroundColor: Colors.success_blue,
+        borderRadius: 20,
+        padding: 10,
+        marginVertical: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      label_boton: {
+        fontSize: 22,
+        color: Colors.my_white,
+
+      }
    
 });
  

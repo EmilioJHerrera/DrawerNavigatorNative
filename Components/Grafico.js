@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import {
@@ -10,9 +10,47 @@ import {
     StackedBarChart
   } from "react-native-chart-kit";
   import { Dimensions } from "react-native";
+  import { useDispatch, useSelector } from 'react-redux';
+
+
+  
+  
+  
+
+  
+  
 
   const Grafico = () => {
-      
+  
+      const data = useSelector(state => state.items.list);
+    const [totales, setTotales] = useState(0);
+    const [ingresos, setIngresos] = useState(0);
+    const [egresos, setEgresos] = useState(0);
+
+    useEffect(() => {
+      let total = 0;
+           data.forEach(item => {
+               total += item.amount;
+           });
+        setTotales(total);
+        console.log(totales);
+
+           let totalIngresos = 0;
+           let totalEgresos = 0;
+           data.forEach(item => {
+               if(item.type === "income"){
+                   totalIngresos += item.amount;
+               }
+               if(item.type === "outcome"){
+                totalEgresos += item.amount;
+            }
+           });
+        setIngresos(totalIngresos);
+        setEgresos(totalEgresos);
+
+    }, [data]);
+
+
     const screenWidth = Dimensions.get("window").width;
     const chartConfig = {
         backgroundGradientFrom: "#1E2923",
@@ -25,9 +63,9 @@ import {
         useShadowColorFromDataset: false // optional
       };
 
-      const data = {
-        labels: ["salario", "basico", "ocio", "adicional"], // optional
-        data: [0.4, 0.6, 1, 0.2]
+      const dataGraph = {
+        labels: ["total","ingresos", "egresos"], // optional
+        data: [totales,ingresos, egresos]
       };
 
 
@@ -35,10 +73,10 @@ import {
     return ( 
         <View style= {styles.container}>
             
-        <Text>Aprender a usar alguna api de graficos</Text>
+        <Text>Mostrar graficos</Text>
 
         <ProgressChart
-  data={data}
+  data={dataGraph}
   width={screenWidth}
   height={220}
   strokeWidth={10}

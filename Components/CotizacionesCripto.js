@@ -52,11 +52,11 @@ const CotizacionesCripto = () => {
     return ( 
         <View style= {styles.container}>
 
-            {apiReady?<InfoCriptoDisplay cryptoInfo={cryptoInfo} />: null} 
+            {apiReady?<InfoCriptoDisplay cryptoInfo={cryptoInfo} />: <Text>Cargando...</Text>} 
             
             {!apiReady?<Text>Cargando...</Text>: null} 
              
-            {apiReady?
+            {/* {apiReady?
             <FlatList 
         data={flatData}
         keyExtractor={(item) => item.id.toString()}
@@ -77,7 +77,7 @@ const CotizacionesCripto = () => {
         ))}/>
         : <Text>Cargando flatlist...</Text>}
 
-
+ */}
 
         </View>
         
