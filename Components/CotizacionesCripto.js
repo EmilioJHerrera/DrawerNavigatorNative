@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Constants } from '../assets/Constants';
 import { set } from 'react-native-reanimated';
 import InfoCriptoDisplay from './InfoCriptoDisplay';
+import { Colors } from '../assets/Colors';
 
 const CotizacionesCripto = () => {
     //States
@@ -90,13 +91,15 @@ const CotizacionesCripto = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: Colors.background,
         alignItems: 'center',
         justifyContent: 'center',
       },
       text:{
           paddingHorizontal: '2%',
           paddingTop: '2%',
+          fontSize: 20,
+            color: Colors.my_white,
       },
       coin:{
           width: 50,

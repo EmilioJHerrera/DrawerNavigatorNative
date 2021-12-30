@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, FlatList,  } from 'react-native';
 
 import { AntDesign } from '@expo/vector-icons'; 
@@ -16,10 +16,12 @@ import NuevoItem from './NuevoItem';
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../assets/Colors';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Balance = () => {
 const [showNew, setShowNew] = useState(false);
-    // const navigation = useNavigation();
+const [DATA, setDATA] = useState([]);
+// const navigation = useNavigation();
 const data = useSelector(state => state.items.list);
 console.log(data);
 
@@ -31,9 +33,9 @@ const handleDispatchItem = (item) => {
 
 }
 
-// const handleDispatchDeleteItem = (id) => {
-//     dispach(removeItem(id));
-// }
+const handleDispatchDeleteItem = (id) => {
+    dispach(removeItem(id));
+}
 
 //ESTA ES LA LISTA QUE SE TRATA DE VER SI SE PUEDE LEER COMO INITIALSTATE DESDE EL REDUCER
 // const [data, setData] = useState([
@@ -48,7 +50,44 @@ const handleDispatchItem = (item) => {
 const deleteData = (id) => {
     setData(data.filter((item) => item.id !== id));
 };
-    
+
+// useEffect(()=>{
+//     const leerStorage = async () => {
+//         try {
+//             const value = await AsyncStorage.getItem('items');
+//             if (value !== null) {
+//                 // Habemus storage!!
+//                 console.log(value);
+//                 setDATA(JSON.parse(value));
+
+//             }else {
+//                 setDATA(data);
+//             }
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     }
+//     leerStorage();
+//     console.log("leyendo storage");
+// },[])
+
+
+//cada vez que cambie data, se ejecuta este efecto
+// useEffect(()=>{
+//     const guardarStorage = async () => {
+//         try {
+//             await AsyncStorage.setItem('items', JSON.stringify(data));
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     }
+//     guardarStorage();
+//     console.log("se guardo en storage");
+// },[data]);
+
+
+
+
     
     return (  
     <View style= {styles.container}>      

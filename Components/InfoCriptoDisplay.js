@@ -1,54 +1,75 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { Colors } from '../assets/Colors';
 
 const InfoCriptoDisplay = ({cryptoInfo}) => {
     return ( 
         <>
-        <Text>Cotizaciones CriptoMonedas</Text>
+        <Text style={styles.big_title}>Cotizaciones CriptoMonedas</Text>
         <ScrollView>
          <View>
-            <Text>Bitcoin</Text>
-            <View>
+            <Text style={styles.title}>Bitcoin</Text>
+            <View style={styles.bit_container}>
+             <View>
                 <Image source={{uri: `https://www.cryptocompare.com${cryptoInfo.BTC.ARS.IMAGEURL}`}} style={styles.coin}/>
             </View>
-             <Text>Precio: {cryptoInfo.BTC.ARS.PRICE}</Text>  
-            <Text>Precio Máx: {cryptoInfo.BTC.ARS.HIGHDAY}</Text>
-            <Text>Precio min: {cryptoInfo.BTC.ARS.LOWDAY}</Text>
-            <Text>Variacion del día: {cryptoInfo.BTC.ARS.CHANGEPCT24HOUR} %</Text>
-            <Text>Última actualizacion: {cryptoInfo.BTC.ARS.LASTUPDATE}</Text>
+            <View>
+             <Text style={styles.texto}>Precio: {cryptoInfo.BTC.ARS.PRICE}</Text>  
+            <Text style={styles.texto}>Precio Máx: {cryptoInfo.BTC.ARS.HIGHDAY}</Text>
+            <Text style={styles.texto}>Precio min: {cryptoInfo.BTC.ARS.LOWDAY}</Text>
+            <Text style={styles.texto}>Variacion del día: {cryptoInfo.BTC.ARS.CHANGEPCT24HOUR} %</Text>
+            <Text style={styles.texto}>Última actualizacion: {cryptoInfo.BTC.ARS.LASTUPDATE}</Text>
+
+            </View>
+            </View>
         </View>
         <View>
-            <Text>Ethereum</Text>
+            <Text style={styles.title}>Ethereum</Text>
+            <View style={styles.bit_container}>
             <View>
                 <Image source={{uri: `https://www.cryptocompare.com${cryptoInfo.ETH.ARS.IMAGEURL}`}} style={styles.coin}/>
             </View>
-             <Text>Precio: {cryptoInfo.ETH.ARS.PRICE}</Text>  
-            <Text>Precio Máx: {cryptoInfo.ETH.ARS.HIGHDAY}</Text>
-            <Text>Precio min: {cryptoInfo.ETH.ARS.LOWDAY}</Text>
-            <Text>Variacion del día: {cryptoInfo.ETH.ARS.CHANGEPCT24HOUR} %</Text>
-            <Text>Última actualizacion: {cryptoInfo.ETH.ARS.LASTUPDATE}</Text>
+            <View>
+             <Text style={styles.texto}>Precio: {cryptoInfo.ETH.ARS.PRICE}</Text>  
+            <Text style={styles.texto}>Precio Máx: {cryptoInfo.ETH.ARS.HIGHDAY}</Text>
+            <Text style={styles.texto}>Precio min: {cryptoInfo.ETH.ARS.LOWDAY}</Text>
+            <Text style={styles.texto}>Variacion del día: {cryptoInfo.ETH.ARS.CHANGEPCT24HOUR} %</Text>
+            <Text style={styles.texto}>Última actualizacion: {cryptoInfo.ETH.ARS.LASTUPDATE}</Text>
+            </View>
+            </View>
         </View>
         <View>
-            <Text>Binance Coin</Text>
+            <Text style={styles.title}>Binance Coin</Text>
+            <View style={styles.bit_container}>
+
             <View>
                 <Image source={{uri: `https://www.cryptocompare.com${cryptoInfo.BNB.ARS.IMAGEURL}`}} style={styles.coin}/>
             </View>
-             <Text>Precio: {cryptoInfo.BNB.ARS.PRICE}</Text>  
-            <Text>Precio Máx: {cryptoInfo.BNB.ARS.HIGHDAY}</Text>
-            <Text>Precio min: {cryptoInfo.BNB.ARS.LOWDAY}</Text>
-            <Text>Variacion del día: {cryptoInfo.BNB.ARS.CHANGEPCT24HOUR} %</Text>
-            <Text>Última actualizacion: {cryptoInfo.BNB.ARS.LASTUPDATE}</Text>
+<View>
+             <Text style={styles.texto}>Precio: {cryptoInfo.BNB.ARS.PRICE}</Text>  
+            <Text  style={styles.texto}>Precio Máx: {cryptoInfo.BNB.ARS.HIGHDAY}</Text>
+            <Text  style={styles.texto}>Precio min: {cryptoInfo.BNB.ARS.LOWDAY}</Text>
+            <Text  style={styles.texto}>Variacion del día: {cryptoInfo.BNB.ARS.CHANGEPCT24HOUR} %</Text>
+            <Text  style={styles.texto}>Última actualizacion: {cryptoInfo.BNB.ARS.LASTUPDATE}</Text>
         </View>
+            </View>
+        </View>
+
         <View>
-            <Text>USDT</Text>
+            <Text style={styles.title}>USDT</Text>
+            <View style={styles.bit_container}>
+
             <View>
                 <Image source={{uri: `https://www.cryptocompare.com${cryptoInfo.USDT.ARS.IMAGEURL}`}} style={styles.coin}/>
             </View>
-             <Text>Precio: {cryptoInfo.USDT.ARS.PRICE}</Text>  
-            <Text>Precio Máx: {cryptoInfo.USDT.ARS.HIGHDAY}</Text>
-            <Text>Precio min: {cryptoInfo.USDT.ARS.LOWDAY}</Text>
-            <Text>Variacion del día: {cryptoInfo.USDT.ARS.CHANGEPCT24HOUR} %</Text>
-            <Text>Última actualizacion: {cryptoInfo.USDT.ARS.LASTUPDATE}</Text>
+<View>
+             <Text  style={styles.texto}>Precio: {cryptoInfo.USDT.ARS.PRICE}</Text>  
+            <Text  style={styles.texto}>Precio Máx: {cryptoInfo.USDT.ARS.HIGHDAY}</Text>
+            <Text  style={styles.texto}>Precio min: {cryptoInfo.USDT.ARS.LOWDAY}</Text>
+            <Text style={styles.texto}>Variacion del día: {cryptoInfo.USDT.ARS.CHANGEPCT24HOUR} %</Text>
+            <Text style={styles.texto}>Última actualizacion: {cryptoInfo.USDT.ARS.LASTUPDATE}</Text>
+        </View>
+            </View>
         </View>
 </ScrollView>
         
@@ -68,9 +89,32 @@ const styles = StyleSheet.create({
           paddingTop: '2%',
       },
       coin:{
-          width: 50,
-          height: 50,
+          width: 80,
+          height: 80,
       },
+      bit_container:{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          
+      },
+        texto:{
+            color: Colors.my_white,
+            fontSize: 18,
+        },
+        title:{
+            color: Colors.my_white,
+            fontSize: 20,
+            fontWeight: 'bold',
+            marginBottom: '5%',
+            marginEnd: '2%',
+        },
+        big_title:{
+            color: Colors.my_white,
+            fontSize: 22,
+            fontWeight: 'bold',
+            fontStyle: 'italic',
+        },
 });
 
  

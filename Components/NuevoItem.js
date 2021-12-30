@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Button, StyleSheet, Text, TextInput, View, ScrollView, Alert, TouchableHighlight} from 'react-native';
 
 import {Picker} from '@react-native-picker/picker';
@@ -17,6 +17,13 @@ const [amount, setAmount] = useState(0);
 const [type, setType] = useState();
 const [category, setCategory] = useState();
 
+const [newItem, setNewItem] = useState(false);
+
+const data = useSelector(state => state.items.list);
+console.log(data);
+
+
+
 //funcion para mostrar alert
 const showAlert =() =>{
     Alert.alert(
@@ -28,6 +35,18 @@ const showAlert =() =>{
     )
 }
 
+// useEffect(()=>{
+//     const guardarStorage = async () => {
+//         try {
+//             await AsyncStorage.setItem('items', JSON.stringify(data));
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     }
+//     guardarStorage();
+//     console.log("se guardo en storage");
+// },[newItem]);
+
 
 const handleAddItem = () => {
     //validar
@@ -38,7 +57,8 @@ const handleAddItem = () => {
     //agregar item
     setId((Math.floor(Math.random() * 100)).toString());
     store.dispatch(addItem({id: id, name: name, amount: amount, type: type, category: category}));
-      
+    //variable auxiliar para el storage      
+    setNewItem(!newItem);
 }
 
     return ( 

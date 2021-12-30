@@ -11,6 +11,7 @@ import {
   } from "react-native-chart-kit";
   import { Dimensions } from "react-native";
   import { useDispatch, useSelector } from 'react-redux';
+import { Colors } from '../assets/Colors';
 
 
   
@@ -27,6 +28,10 @@ import {
     const [ingresos, setIngresos] = useState(0);
     const [egresos, setEgresos] = useState(0);
 
+    //valores porcentuales
+    const [porcentajeIngresos, setPorcentajeIngresos] = useState(0);
+    const [porcentajeEgresos, setPorcentajeEgresos] = useState(0);
+    
     useEffect(() => {
       let total = 0;
            data.forEach(item => {
@@ -48,16 +53,19 @@ import {
         setIngresos(totalIngresos);
         setEgresos(totalEgresos);
 
+        setPorcentajeIngresos((totalIngresos/ total));
+        setPorcentajeEgresos((totalEgresos/ total));
+
     }, [data]);
 
 
     const screenWidth = Dimensions.get("window").width;
     const chartConfig = {
-        backgroundGradientFrom: "#1E2923",
+        backgroundGradientFrom: Colors.background,
         backgroundGradientFromOpacity: 1,
-        backgroundGradientTo: "#08130D",
+        backgroundGradientTo: Colors.background,
         backgroundGradientToOpacity: 0.5,
-        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+        color: (opacity = 1) => `rgba(95, 95, 230, ${opacity})`,
         strokeWidth: 2, // optional, default 3
         barPercentage: 0.5,
         useShadowColorFromDataset: false // optional
@@ -65,25 +73,33 @@ import {
 
       const dataGraph = {
         labels: ["total","ingresos", "egresos"], // optional
-        data: [totales,ingresos, egresos]
+        data: [1,porcentajeIngresos, porcentajeEgresos]
       };
 
-
-
+      
     return ( 
         <View style= {styles.container}>
             
-        <Text>Mostrar graficos</Text>
-
+        <Text style={styles.label}>Mostrar gráficos</Text>
+      <View>
+      
         <ProgressChart
   data={dataGraph}
   width={screenWidth}
-  height={220}
-  strokeWidth={10}
+  height={320}
+  strokeWidth={20}
   radius={32}
   chartConfig={chartConfig}
   hideLegend={false}
 />
+
+      </View>
+
+      <View>
+        <Text style={styles.label}>Total: {totales}$</Text>
+        <Text style={styles.label}>Ingresos: {ingresos}$</Text>
+        <Text style={styles.label}>Egresos: {egresos}$</Text>
+        </View>
     </View>
      );
 }
@@ -91,10 +107,16 @@ import {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: Colors.background,
         alignItems: 'center',
         justifyContent: 'center',
       },
+      label: {
+        fontSize: 20,
+        color: Colors.my_white,
+         fontWeight: 'bold',
+          marginVertical: '2%',
+         },
 });
  
 export default Grafico;
