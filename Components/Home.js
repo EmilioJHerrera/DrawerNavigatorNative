@@ -12,32 +12,36 @@ const Home = ({navigation}) => {
                    <Text style={styles.label_boton}>Balance</Text>
                </TouchableHighlight>
            </View>
+           
            <View style={styles.container_boton}>
                <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("Nuevo")}>
                    <Text style={styles.label_boton}>Nuevo Ingreso</Text>
                </TouchableHighlight>
            </View>
+           
            <View style={styles.container_boton} >
                <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("Grafico")}>
                    <Text style={styles.label_boton}>Gráficos</Text>
                </TouchableHighlight>
            </View>
+           
            <View style={styles.container_boton}>
                <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("CotizacionesCripto")}>
                    <Text style={styles.label_boton}>Criptomonedas</Text>
                </TouchableHighlight>
            </View>
-           <View style={styles.container_boton}>
-               <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("About")}>
-                   <Text style={styles.label_boton}>Sobre la App</Text>
-               </TouchableHighlight>
-           </View>
+           
            <View style={styles.container_boton}>
                <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("Camara")}>
                    <Text style={styles.label_boton}>Registro Foto</Text>
                </TouchableHighlight>
            </View>
 
+           <View style={styles.container_boton}>
+               <TouchableHighlight style={styles.boton} onPress={()=> navigation.navigate("About")}>
+                   <Text style={styles.label_boton}>Sobre la App</Text>
+               </TouchableHighlight>
+           </View>
 
         </View>
      );

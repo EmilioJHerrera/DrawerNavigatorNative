@@ -7,7 +7,7 @@ const InfoCriptoDisplay = ({cryptoInfo}) => {
         <>
         <Text style={styles.big_title}>Cotizaciones CriptoMonedas</Text>
         <ScrollView>
-         <View>
+         <View style={styles.info_container}>
             <Text style={styles.title}>Bitcoin</Text>
             <View style={styles.bit_container}>
              <View>
@@ -114,6 +114,9 @@ const styles = StyleSheet.create({
             fontSize: 22,
             fontWeight: 'bold',
             fontStyle: 'italic',
+        },
+        info_container:{
+            backgroundColor: Colors.card_bg,
         },
 });
 
